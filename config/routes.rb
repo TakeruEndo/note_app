@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'static_pages/index'
 
   resources :books
+  resources :memos
 
   get    "login",  to: "static_pages#show"
   

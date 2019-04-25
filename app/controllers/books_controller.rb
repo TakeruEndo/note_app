@@ -13,7 +13,11 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book =  Book.find(params[:id])   
+    @book =  Book.find(params[:id])  
+    # 今いるところでmemoを定義してあげないといけない　"First argument in form cannot contain nil or be empty"
+    @memo = Memo.new
+    @memos = Memo.where(book_id: params[:id])
+     
   end
 
   def new
@@ -29,10 +33,12 @@ class BooksController < ApplicationController
     url = URI.parse(urls)
     json = Net::HTTP.get(url) #NET::HTTPを利用してAPIを叩く
     result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
-
-    @book.authors = result['items'][0]["volumeInfo"]['authors']
-    @book.title =  result["items"][0]["volumeInfo"]['title']
-    @book.ISBN = isbn
+    if result['items']
+      @book.authors = result['items'][0]["volumeInfo"]['authors']
+      @book.title =  result["items"][0]["volumeInfo"]['title']
+      @book.ISBN = isbn
+      # @book.description = result["items"][0]["volumeInfo"]['description']
+    end
 
     if @book.save
       flash[:success] = "Micropost deleted"
@@ -40,6 +46,12 @@ class BooksController < ApplicationController
     end
     # render plain: params.inspect 
 
+  end
+
+  def destroy
+    Book.find(params[:id]).destroy
+    flash[:success] = "Book deleted"
+    redirect_to root_url
   end
 
 end
