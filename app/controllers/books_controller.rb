@@ -41,7 +41,8 @@ class BooksController < ApplicationController
     json = Net::HTTP.get(url) #NET::HTTPを利用してAPIを叩く
     result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
     if result['items']
-      @book.authors = result['items'][0]["volumeInfo"]['authors']
+      book_authors = result['items'][0]["volumeInfo"]['authors'].to_s
+      @book.authors = book_authors[3..-3]
       @book.title =  result["items"][0]["volumeInfo"]['title']
       @book.ISBN = isbn
       @book.description = result["items"][0]["volumeInfo"]['description']

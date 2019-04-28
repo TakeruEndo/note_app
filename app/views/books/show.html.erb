@@ -7,10 +7,12 @@
     <%= image_tag @result['items'][0]["volumeInfo"]["imageLinks"]['smallThumbnail'], class: "nav__logo" %>
   </div>
   <div class="info-block">
-    <%= @result['items'][0]["volumeInfo"]['title'] %><br>
-    <%= @result['items'][0]["volumeInfo"]['authors'] %><br>
-    <%= @result['items'][0]["volumeInfo"]['publishDate'] %><br>
-    <%= @result['items'][0]["volumeInfo"]['description'] %>
+    <ul style="list-style-type: none">
+      <li class="list_title"><%= @result['items'][0]["volumeInfo"]['title'] %></li>
+      <li><%= @result['items'][0]["volumeInfo"]['authors'] %></li>
+      <li><%= @result['items'][0]["volumeInfo"]['publishDate'] %></li>
+      <li><%= @result['items'][0]["volumeInfo"]['description'] %></li>
+    </ul>
   </div>
 </div>
 
