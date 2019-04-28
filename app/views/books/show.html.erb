@@ -18,8 +18,7 @@
 <div>
   <% @memos.each do |memo| %>
       <div class="tableIndex__row" memo_id="<%= memo.id %>">
-        <h2><%= memo.heading %></h2>
-        <p><%= memo.content %></p>
+        <p><%= markdown(memo.content) %></p>
       </div>
   <% end %>
 

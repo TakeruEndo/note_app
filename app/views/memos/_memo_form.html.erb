@@ -1,10 +1,10 @@
 <%= form_for @memo, :url => {controller: :memos, :action => 'create'} do |f| %>
     
     <div class="form__row">
-      <p><%= f.text_area :heading, :placeholder => "サブタイトル", class: "memo__title" %></p>
       <p><%= f.text_area :content,  :placeholder => "SubTitle", class: "memo__detail" %></p>
       <%= f.hidden_field :book_id, value: @book.id %>
     </div>
     
     <%= f.submit "追加", class: "form__submit" %>
   <% end %>
+  
