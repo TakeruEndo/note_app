@@ -1,5 +1,3 @@
-<script>
-
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 //
 //  【 画像やDIVのマウス移動 】  http://www.cman.jp
@@ -324,10 +322,3 @@ function cmanOM_JS_mmove(e){
 	return false;
 
 }
-
-</script>
-
-
-<div  cmanOMat="move">
-  <input type="button" value = "移動可能">
-</div>

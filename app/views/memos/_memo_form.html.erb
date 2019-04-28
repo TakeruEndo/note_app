@@ -1,8 +1,8 @@
 <%= form_for @memo, :url => {controller: :memos, :action => 'create'} do |f| %>
     
     <div class="form__row">
-      <%= f.text_area :heading  %>
-      <%= f.text_area :content, class: "itemsForm__detail" %>
+      <p><%= f.text_area :heading, :placeholder => "サブタイトル", class: "memo__title" %></p>
+      <p><%= f.text_area :content,  :placeholder => "SubTitle", class: "memo__detail" %></p>
       <%= f.hidden_field :book_id, value: @book.id %>
     </div>
     

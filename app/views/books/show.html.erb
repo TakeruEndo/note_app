@@ -1,20 +1,30 @@
-<div class="container__form">
-  <div class="header">
-    <div class="header__top">
-      <h1 class="header__title"><%= @book.id %></h1>
-    </div>
+<div>
+<h2>メモ一覧</h2>
+</div>
+
+<div class="book-container">
+  <div class="image-block">
+    <%= image_tag @result['items'][0]["volumeInfo"]["imageLinks"]['smallThumbnail'], class: "nav__logo" %>
   </div>
+  <div class="info-block">
+    <%= @result['items'][0]["volumeInfo"]['title'] %><br>
+    <%= @result['items'][0]["volumeInfo"]['authors'] %><br>
+    <%= @result['items'][0]["volumeInfo"]['publishDate'] %><br>
+    <%= @result['items'][0]["volumeInfo"]['description'] %>
+  </div>
+</div>
 
-  <section class="micropost_form">
-    <%= render 'memos/memo_form' %>
-  </section>
 
-
+<div>
   <% @memos.each do |memo| %>
       <div class="tableIndex__row" memo_id="<%= memo.id %>">
         <h2><%= memo.heading %></h2>
         <p><%= memo.content %></p>
       </div>
   <% end %>
+
+    <section class="memo_form">
+      <%= render 'memos/memo_form' %>
+    </section>
 
 </div>

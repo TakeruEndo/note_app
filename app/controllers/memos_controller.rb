@@ -27,4 +27,11 @@ class MemosController < ApplicationController
         @memo = Memo.find(params[:id])
         render "new"
     end
+
+    def destroy
+        Memo.find(params[:id]).destroy
+        flash[:success] = "Memo deleted"
+        redirect_to root_url
+    end
+
 end

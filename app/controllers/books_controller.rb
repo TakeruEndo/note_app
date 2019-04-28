@@ -18,6 +18,13 @@ class BooksController < ApplicationController
     @memo = Memo.new
     @memos = Memo.where(book_id: params[:id])
      
+    book_id = params[:id]
+
+    urls = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + @book.ISBN
+    url = URI.parse(urls)
+    json = Net::HTTP.get(url) #NET::HTTPを利用してAPIを叩く
+    @result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
+
   end
 
   def new
@@ -37,7 +44,7 @@ class BooksController < ApplicationController
       @book.authors = result['items'][0]["volumeInfo"]['authors']
       @book.title =  result["items"][0]["volumeInfo"]['title']
       @book.ISBN = isbn
-      # @book.description = result["items"][0]["volumeInfo"]['description']
+      @book.description = result["items"][0]["volumeInfo"]['description']
     end
 
     if @book.save

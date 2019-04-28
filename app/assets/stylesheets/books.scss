@@ -2,3 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.book-container{
+    border: 1px solid #ddd;
+    margin-top: 50px;
+    width: 100%;
+    height: 200px;
+}
+
+.info-block{
+    float: right;
+    width:85%;
+}
+
+.image-block{
+    float: left;
+    width:15%;
+    margin: 0%;
+    padding: 0;
+}
+
+.memo_form{
+    margin-top: 40px;
+}
