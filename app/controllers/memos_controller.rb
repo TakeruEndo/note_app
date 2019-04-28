@@ -18,7 +18,7 @@ class MemosController < ApplicationController
 
         if @memo.save
             flash[:success] = "Micropost deleted"
-            redirect_to root_url
+            redirect_to "/books/" + params['memo']['book_id']
         end
 
     end
