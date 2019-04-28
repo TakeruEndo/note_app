@@ -42,7 +42,7 @@ class BooksController < ApplicationController
     result = JSON.parse(json) #返ってきたjsonデータをrubyの配列に変換
     if result['items']
       book_authors = result['items'][0]["volumeInfo"]['authors'].to_s
-      @book.authors = book_authors[3..-3]
+      @book.authors = book_authors[2..-3]
       @book.title =  result["items"][0]["volumeInfo"]['title']
       @book.ISBN = isbn
       @book.description = result["items"][0]["volumeInfo"]['description']
@@ -57,6 +57,11 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    # 先にメモを全部削除する
+    memos = Memo.where(book_id: params[:id])
+    memos.each do |memo|
+      memo.destroy
+    end
     Book.find(params[:id]).destroy
     flash[:success] = "Book deleted"
     redirect_to root_url
