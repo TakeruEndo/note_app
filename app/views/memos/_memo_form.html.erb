@@ -1,7 +1,7 @@
 <%= form_for @memo, :url => {controller: :memos, :action => 'create'} do |f| %>
     
     <div class="form__row">
-      <p><%= f.text_area :content,  :placeholder => "メモをかこー！マークダウンだよ", class: "memo__detail border-0" %></p>
+      <p><%= f.text_area :content,  :placeholder => "メモをかこー！マークダウンだよ", class: "memo__detail memo__form" %></p>
       <%= f.hidden_field :book_id, value: @book.id %>
     </div>
     

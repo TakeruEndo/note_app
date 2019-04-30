@@ -17,13 +17,17 @@
 </div>
 
 
-<div>
-  <% @memos.each do |memo| %>
-      <div class="tableIndex__row" memo_id="<%= memo.id %>">
-        <p><%= markdown(memo.content) %></p>
-      </div>
-  <% end %>
-
+<div class="box-container color-white b-radius">
+  <div class="memo-box">
+    <% @memos.each do |memo| %>
+        <div class="a-memo" memo_id="<%= memo.id %>">
+          <p><%= markdown(memo.content) %></p>
+        </div>
+        <%= link_to "削除", memo, controller: :memos, method: :delete,
+                                     data: { confirm: "You sure?" } %>
+        <%= link_to "編集" %>
+    <% end %>
+  </div>
     <section class="memo_form">
       <%= render 'memos/memo_form' %>
     </section>

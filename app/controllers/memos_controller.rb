@@ -29,9 +29,11 @@ class MemosController < ApplicationController
     end
 
     def destroy
+        memo = Memo.find(params[:id])
+        book_id = memo.book_id.to_s
         Memo.find(params[:id]).destroy
         flash[:success] = "Memo deleted"
-        redirect_to root_url
+        redirect_to "/books/" + book_id
     end
 
 end
