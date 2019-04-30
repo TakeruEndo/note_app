@@ -8,8 +8,8 @@
   </div>
   <div class="info-block">
     <ul style="list-style-type: none">
-      <li class="list_title"><%= @result['items'][0]["volumeInfo"]['title'] %></li>
-      <li><%= @result['items'][0]["volumeInfo"]['authors'] %></li>
+      <li class="font-weight-bold"><%= @result['items'][0]["volumeInfo"]['title'] %></li>
+      <li class=""><span class="font-weight-bold"><% book_authors = @result['items'][0]["volumeInfo"]['authors'].to_s %><%= book_authors[2..-3] %></span></li>
       <li><%= @result['items'][0]["volumeInfo"]['publishDate'] %></li>
       <li><%= @result['items'][0]["volumeInfo"]['description'] %></li>
     </ul>
