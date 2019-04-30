@@ -1,0 +1,48 @@
+<h2>人生でいとどは読んでほしい本</h2>
+<div>
+
+</div>
+
+<div class = "container" >
+  <h2>書籍管理システム</h2>
+  <%= form_for @book, :url => {:action => 'create'} do |f| %>
+
+    <div class="field">
+      <%= f.text_area  :ISBN, placeholder: "ISBNを入力！！" %>
+    </div>
+    <%= f.submit "登録", class: "btn btn-primary" %>
+  
+  <% end %>
+      
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered　table-hover">
+      <thead>
+        <tr>
+            <th>ID</th>
+            <th>本のタイトル</th>
+            <th>著者</th>
+            <th>ISBN</th>
+            <th>削除</th>
+            <th>詳細</th>
+        </tr>
+      </thead>
+      <% @books.each do |book| %>
+        <tbody>
+          <tr class="tableIndex__row" book_id="<%= book.id %>">
+            <td ><%= book.id %></td>
+            <td><%= book.title %></td>
+            <td><%= book.authors %></td>
+            <td><%= book.ISBN %></td>
+            <td>
+              <%= link_to "削除", book, method: :delete,
+              data: { confirm: "You sure?" } %>
+            </td>
+            <td>
+              <%= link_to "詳細", book, class: "index__btn" %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </div>
+</div>

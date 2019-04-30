@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NoteApp</title>
+    <title>本共有</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <%= javascript_include_tag 'application' %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="cmanObjMove_v091.js" charset="utf-8"></script>
+
+    <%= yield :head %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/nav" %>
+    <div class="nav__back"></div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  <div class="footer">Copyrights ©  App, Inc.</div>
+
   </body>
 </html>
