@@ -4,7 +4,7 @@
 
 <div class="book-container">
   <div class="image-block">
-    <%= image_tag @result['items'][0]["volumeInfo"]["imageLinks"]['smallThumbnail'], class: "nav__logo" %>
+    <%= image_tag @result['items'][0]["volumeInfo"]["imageLinks"]['smallThumbnail'], class: "book__image" %>
   </div>
   <div class="info-block">
     <ul style="list-style-type: none">
@@ -19,6 +19,7 @@
 
 <div class="box-container color-white b-radius">
   <div class="memo-box">
+  <h2>My Note</h2>
     <% @memos.each do |memo| %>
         <div class="a-memo" memo_id="<%= memo.id %>">
           <p><%= markdown(memo.content) %></p>
